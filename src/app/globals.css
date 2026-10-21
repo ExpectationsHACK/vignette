@@ -72,6 +72,16 @@ body {
   background-image: repeating-linear-gradient(-45deg, var(--color-red) 0 10px, transparent 10px 20px);
 }
 
+/* Full-width divider in the cover's red-and-cream spine pattern */
+.stripe-band {
+  height: 14px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-red) 0 9px,
+    var(--color-cream) 9px 18px
+  );
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

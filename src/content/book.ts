@@ -2,8 +2,8 @@
 // Links marked TODO still need real URLs.
 
 export const site = {
-  /** TODO: set to the live domain once purchased. */
-  url: "https://www.example.com",
+  /** Live address: a subdomain of esuakemapress.com (DNS at Wix, CNAME to Vercel). */
+  url: "https://vignettes.esuakemapress.com",
   publisher: "Esuakema Press",
   title: "Vignettes of a Nigerian Experience",
   author: "Heloise Annette Oton",
@@ -49,7 +49,7 @@ export const author = {
   photo: {
     src: "/images/heloise.jpg",
     alt: "Heloise Annette Oton, smiling, in a blue and violet batik headwrap and dress",
-    position: "35% 30%",
+    position: "50% 30%",
   },
   bio: "Heloise Annette Oton was born in Harlem, New York, to a Jamaican mother and a Trinidadian father. She grew up in the Bronx, studied at Columbia, and marched on Washington. In 1962 she followed her husband, Esuakema Udo Oton, to Nigeria, where she lived for more than two decades. She taught hundreds of students in Calabar, raised five children, and managed a business after her husband’s death. She writes from Brooklyn, New York.",
 };

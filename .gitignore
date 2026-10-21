@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Original full-size photo; the site uses public/images/heloise.jpg
+/public/author.jpg
