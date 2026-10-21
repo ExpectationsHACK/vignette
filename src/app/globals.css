@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Palette taken from the book cover */
+@theme {
+  --color-red: #c8372a;
+  --color-red-dark: #a82c21;
+  --color-cream: #ebe3d5;
+  --color-sand: #ddd2c0;
+  --color-paper: #f6f2ea;
+  --color-ink: #1d1a17;
+  --color-charcoal: #2a2724;
+  --color-gold: #c4973e;
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-caslon), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Big uppercase serif headings, like the cover title */
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+}
+
+/* The striped corner motif from the cover */
+.stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-red) 0 10px,
+    transparent 10px 20px
+  );
+}
