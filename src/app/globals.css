@@ -44,7 +44,7 @@ body {
 /* Big uppercase Didone headings, like the cover title */
 .display {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 700;
   /* Pin optical size: at full display size Bodoni's hairlines vanish */
   font-variation-settings: "opsz" 18;
   text-transform: uppercase;
