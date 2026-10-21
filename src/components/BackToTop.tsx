@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ArrowUp } from "@/components/Icons";
 
 export default function BackToTop() {
   const [show, setShow] = useState(false);
@@ -15,11 +16,13 @@ export default function BackToTop() {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`fixed bottom-5 right-5 z-30 rounded-full bg-[#3d4a54] px-4 py-2 text-[13px] text-white shadow-lg transition-opacity ${
-        show ? "opacity-100" : "pointer-events-none opacity-0"
+      aria-label="Back to top"
+      tabIndex={show ? 0 : -1}
+      className={`fixed bottom-5 right-5 z-30 grid h-12 w-12 place-items-center rounded-full bg-ink text-white shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5)] transition-[opacity,transform,background-color] duration-500 ease-out-expo hover:bg-red ${
+        show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
       }`}
     >
-      ↑ Back to top
+      <ArrowUp size={20} />
     </button>
   );
 }

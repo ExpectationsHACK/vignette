@@ -41,8 +41,16 @@ export const aboutBook = {
 
 export const author = {
   heading: "Meet the Author",
-  /** TODO: add a photo of Heloise to /public/images and set e.g. "/images/heloise.jpg". */
-  photo: "",
+  /**
+   * Author portrait. Save the photo as /public/images/heloise.jpg; until the file
+   * exists a placeholder is shown. `position` sets which part of the photo stays
+   * in frame when it is cropped to a portrait shape.
+   */
+  photo: {
+    src: "/images/heloise.jpg",
+    alt: "Heloise Annette Oton, smiling, in a blue and violet batik headwrap and dress",
+    position: "35% 30%",
+  },
   bio: "Heloise Annette Oton was born in Harlem, New York, to a Jamaican mother and a Trinidadian father. She grew up in the Bronx, studied at Columbia, and marched on Washington. In 1962 she followed her husband, Esuakema Udo Oton, to Nigeria, where she lived for more than two decades. She taught hundreds of students in Calabar, raised five children, and managed a business after her husband’s death. She writes from Brooklyn, New York.",
 };
 
@@ -64,10 +72,10 @@ export const enquire = {
 };
 
 export const footer = {
-  /** TODO: social profile URLs. */
+  /** Profiles with an empty href are hidden. TODO: Facebook and LinkedIn URLs. */
   social: [
-    { label: "Facebook", href: "#" },
-    { label: "Instagram", href: "#" },
-    { label: "LinkedIn", href: "#" },
-  ],
+    { label: "Facebook", icon: "facebook", href: "" },
+    { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/esuakemapress/" },
+    { label: "LinkedIn", icon: "linkedin", href: "" },
+  ] as const,
 };

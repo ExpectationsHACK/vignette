@@ -3,42 +3,83 @@
 /* Palette taken from the book cover */
 @theme {
   --color-red: #c8372a;
-  --color-red-dark: #a82c21;
+  --color-red-dark: #a42b20;
   --color-cream: #ebe3d5;
   --color-sand: #ddd2c0;
-  --color-paper: #f6f2ea;
+  --color-paper: #f7f3ec;
   --color-ink: #1d1a17;
-  --color-charcoal: #2a2724;
+  --color-charcoal: #24211e;
   --color-gold: #c4973e;
-  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-caslon), Georgia, serif;
+  --color-gold-light: #ddb767;
+  --font-display: var(--font-bodoni), "Didot", Georgia, serif;
+  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem;
+  scroll-padding-top: 4.5rem;
+  scrollbar-color: var(--color-red) var(--color-cream);
 }
 
 body {
   background: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
+  caret-color: var(--color-red);
+  text-rendering: optimizeLegibility;
 }
 
-/* Big uppercase serif headings, like the cover title */
+::selection {
+  background: var(--color-red);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 3px;
+}
+
+/* Big uppercase Didone headings, like the cover title */
 .display {
-  font-family: var(--font-serif);
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-weight: 500;
+  /* Pin optical size: at full display size Bodoni's hairlines vanish */
+  font-variation-settings: "opsz" 18;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height: 1.05;
+  letter-spacing: 0.02em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+/* Italic Bodoni accents get the same optical-size pin */
+.font-display {
+  font-variation-settings: "opsz" 18;
+}
+
+/* Small UI text: buttons, labels, meta */
+.ui {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 /* The striped corner motif from the cover */
 .stripes {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    var(--color-red) 0 10px,
-    transparent 10px 20px
-  );
+  background-image: repeating-linear-gradient(-45deg, var(--color-red) 0 10px, transparent 10px 20px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

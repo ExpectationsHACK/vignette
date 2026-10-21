@@ -1,21 +1,28 @@
 import type { Metadata } from "next";
-import { Outfit, Libre_Caslon_Text } from "next/font/google";
+import { Bodoni_Moda, Source_Serif_4, Manrope } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { site } from "@/content/book";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
   subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
 });
 
-const caslon = Libre_Caslon_Text({
-  variable: "--font-caslon",
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
-  weight: ["400", "700"],
   style: ["normal", "italic"],
+  axes: ["opsz"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +42,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${caslon.variable} antialiased`}>
+    <html lang="en" className={`${bodoni.variable} ${sourceSerif.variable} ${manrope.variable} antialiased`}>
       <body>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-16 focus:z-[60] focus:bg-white focus:px-4 focus:py-2">
           Skip to content

@@ -1,24 +1,40 @@
+import { socialIcons } from "@/components/Icons";
 import { footer, site } from "@/content/book";
 
 export default function Footer() {
-  return (
-    <footer className="bg-charcoal px-4 py-12 text-center text-white">
-      <p className="display text-[20px] md:text-[24px]">{site.title}</p>
-      <p className="mt-2 font-serif text-[15px] italic text-white/85">{site.subtitle}</p>
-      <p className="mt-1 text-[13px] text-white/70">{site.editorialCredit}</p>
+  const social = footer.social.filter((s) => s.href);
 
-      <p className="mt-8 text-[14px]">
-        Follow us:{" "}
-        {footer.social.map((s, i) => (
-          <span key={s.label}>
-            {i > 0 && <span className="px-2 text-white/50">·</span>}
-            <a href={s.href} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:text-gold hover:underline">
-              {s.label}
-            </a>
-          </span>
-        ))}
-      </p>
-      <p className="mt-6 text-[12px] text-white/60">
+  return (
+    <footer className="bg-charcoal px-4 pb-10 pt-16 text-center text-white">
+      <p className="display text-[24px] md:text-[30px]">{site.title}</p>
+      <p className="mt-3 font-display text-[18px] italic text-white/85">{site.subtitle}</p>
+      <p className="mx-auto mt-2 max-w-xl text-[15px] text-white/65">{site.editorialCredit}</p>
+
+      {social.length > 0 && (
+        <div className="mt-10 flex flex-col items-center gap-4">
+          <p className="ui text-white/65">Follow us</p>
+          <ul className="flex gap-3">
+            {social.map((s) => {
+              const Ico = socialIcons[s.icon];
+              return (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${site.publisher} on ${s.label}`}
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-gold-light hover:bg-gold-light hover:text-charcoal"
+                  >
+                    <Ico size={18} />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
+      <p className="mt-12 border-t border-white/10 pt-8 font-sans text-[13px] text-white/55">
         © {new Date().getFullYear()} {site.publisher}. All rights reserved.
       </p>
     </footer>
