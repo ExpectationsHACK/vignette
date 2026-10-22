@@ -72,10 +72,10 @@ export const enquire = {
 };
 
 export const footer = {
-  /** Profiles with an empty href are hidden. TODO: Facebook and LinkedIn URLs. */
+  /** Profiles with an empty href are hidden. TODO: Facebook URL. */
   social: [
     { label: "Facebook", icon: "facebook", href: "" },
     { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/esuakemapress/" },
-    { label: "LinkedIn", icon: "linkedin", href: "" },
+    { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/in/esuakema-press-b8718b446" },
   ] as const,
 };
