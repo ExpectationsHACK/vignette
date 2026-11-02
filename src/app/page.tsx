@@ -231,7 +231,7 @@ export default function Home() {
           <blockquote className="mt-4 font-display text-[30px] italic leading-[1.2] text-ink text-balance md:text-[48px]">
             {featured.text}
           </blockquote>
-          <figcaption className="ui mt-6 text-red">{featured.source}</figcaption>
+          <figcaption className="ui mt-6 text-ink/70">{featured.source}</figcaption>
         </figure>
 
         <div className="relative mx-auto mt-14 grid max-w-5xl gap-10 border-t border-ink/20 pt-12 md:grid-cols-2 md:gap-16">
@@ -240,7 +240,7 @@ export default function Home() {
               <blockquote className="font-display text-[24px] italic leading-snug text-ink md:text-[28px]">
                 &ldquo;{q.text}&rdquo;
               </blockquote>
-              <figcaption className="ui mt-4 text-red">{q.source}</figcaption>
+              <figcaption className="ui mt-4 text-ink/70">{q.source}</figcaption>
             </figure>
           ))}
         </div>
