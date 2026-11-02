@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Loader, Send } from "@/components/Icons";
+import { Check, Send } from "@/components/Icons";
+import { enquire } from "@/content/book";
 
-type Status = "idle" | "sending" | "done" | "error";
+type Status = "idle" | "draft";
 
 const label = "ui block text-[12px] text-ink/75";
 const field =
@@ -11,38 +12,46 @@ const field =
 
 export default function ContactForm({ topics }: { topics: string[] }) {
   const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState("");
+  const [draftUrl, setDraftUrl] = useState("");
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Your enquiry couldn't be sent. Please try again.");
-      setStatus("done");
-      form.reset();
-    } catch (err) {
-      setStatus("error");
-      setError(err instanceof Error ? err.message : "Your enquiry couldn't be sent. Please try again.");
-    }
+    const values = new FormData(form);
+    const body = [
+      `Name: ${values.get("name") ?? ""}`,
+      `Organization: ${values.get("organization") ?? ""}`,
+      `Email: ${values.get("email") ?? ""}`,
+      `Enquiry type: ${values.get("topic") ?? ""}`,
+      `Quantity / target event date: ${values.get("quantityOrDate") ?? ""}`,
+      "",
+      "Message:",
+      values.get("message") ?? "",
+    ].join("\n");
+    const url = `mailto:${enquire.email}?${new URLSearchParams({
+      subject: "Bulk Order Inquiry - Vignettes of a Nigerian Experience",
+      body,
+    }).toString()}`;
+    setDraftUrl(url);
+    setStatus("draft");
+    window.location.href = url;
   }
 
-  if (status === "done") {
+  if (status === "draft") {
     return (
       <div role="status" className="flex flex-col items-center py-10 text-center">
         <span className="grid h-14 w-14 place-items-center rounded-full bg-red text-white">
           <Check size={26} />
         </span>
-        <p className="display mt-5 text-[28px] text-ink">Thank you</p>
-        <p className="mt-2 text-[18px] text-ink/80">Your enquiry has been sent. We&rsquo;ll be in touch soon.</p>
-        <button onClick={() => setStatus("idle")} className="ui mt-6 text-red underline-offset-[6px] hover:underline">
-          Send another enquiry
+        <p className="display mt-5 text-[28px] text-ink">Email draft ready</p>
+        <p className="mt-2 text-[18px] text-ink/80">
+          Your email app should open with the inquiry. Review and send the draft to complete your request.
+        </p>
+        <a href={draftUrl} className="ui mt-6 text-red underline-offset-[6px] hover:underline">
+          Open your email draft
+        </a>
+        <button onClick={() => setStatus("idle")} className="ui mt-4 text-red underline-offset-[6px] hover:underline">
+          Edit your inquiry
         </button>
       </div>
     );
@@ -84,26 +93,11 @@ export default function ContactForm({ topics }: { topics: string[] }) {
       <div className="sm:col-span-2">
         <button
           type="submit"
-          disabled={status === "sending"}
           className="group ui inline-flex h-[52px] w-full items-center justify-center gap-3 bg-red px-8 text-white shadow-[0_6px_16px_-6px_rgba(168,43,32,0.55)] transition-colors duration-300 hover:bg-red-dark disabled:cursor-wait disabled:opacity-70 sm:w-auto"
         >
-          {status === "sending" ? (
-            <>
-              <Loader size={18} className="animate-spin" />
-              Sending…
-            </>
-          ) : (
-            <>
-              Send Enquiry
-              <Send size={17} className="transition-transform duration-300 ease-out-expo group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </>
-          )}
+          Prepare Email
+          <Send size={17} className="transition-transform duration-300 ease-out-expo group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </button>
-        {status === "error" && (
-          <p role="alert" className="mt-4 text-[16px] text-red-dark">
-            {error}
-          </p>
-        )}
       </div>
     </form>
   );

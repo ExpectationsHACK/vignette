@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: site.publisher,
     title: site.seoTitle,
     description: site.metaDescription,
-    images: [site.mockup.src],
+    images: [site.heroCover.src],
   },
   twitter: { card: "summary_large_image" },
 };

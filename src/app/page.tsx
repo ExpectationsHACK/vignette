@@ -2,9 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
-import { BuyButton, BulkButton } from "@/components/Cta";
+import { BuyButton, BulkButton, RetailerButton } from "@/components/Cta";
 import { Eye, Heart, Home as HomeIcon, Instagram, QuoteMark, Users } from "@/components/Icons";
-import { site, aboutBook, author, excerpts, enquire, footer } from "@/content/book";
+import ReaderVoices from "@/components/ReaderVoices";
+import { site, aboutBook, author, excerpts, enquire, footer, selectedQuotes } from "@/content/book";
 
 const highlightIcons = [Heart, Eye, HomeIcon, Users];
 
@@ -29,6 +30,7 @@ export default function Home() {
       {/* Title band, echoing the cover */}
       <section className="relative overflow-hidden bg-cream px-4 pb-16 pt-14 text-center md:pb-20 md:pt-20">
         <div className="stripes pointer-events-none absolute -bottom-6 -left-6 hidden h-28 w-28 opacity-80 sm:block md:h-44 md:w-44" />
+        <div className="stripes pointer-events-none absolute right-0 top-16 hidden h-28 w-28 opacity-50 sm:block md:h-40 md:w-40" />
 
         <div className="relative">
           <div className="pointer-events-none absolute -bottom-6 left-1/2 aspect-square w-[160vw] -translate-x-1/2 rounded-full bg-red md:-bottom-10 md:w-[120vw]" />
@@ -43,13 +45,48 @@ export default function Home() {
           </h1>
         </div>
 
-        <p className="relative mt-12 font-display text-[22px] italic text-ink md:text-[28px]">{site.subtitle}</p>
-        <p className="relative mx-auto mt-3 max-w-xl text-[15px] leading-relaxed text-ink/70 md:text-[16px]">{site.editorialCredit}</p>
+        <Image
+          src={site.heroCover.src}
+          width={site.heroCover.width}
+          height={site.heroCover.height}
+          alt={`${site.title} book cover`}
+          priority
+          sizes="(min-width: 1024px) 500px, (min-width: 640px) 420px, 340px"
+          className="relative mx-auto mt-5 w-[340px] max-w-[86vw] drop-shadow-[0_28px_24px_rgba(29,26,23,0.3)] sm:w-[420px] md:w-[500px]"
+        />
 
-        <div className="relative mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <BuyButton className="w-full max-w-[360px] sm:w-auto" />
-          <BulkButton className="w-full max-w-[360px] sm:w-auto" />
+        <div className="relative mx-auto mt-7 max-w-5xl overflow-hidden rounded-xl border border-red/25 bg-paper/95 p-4 shadow-[0_20px_44px_-28px_rgba(29,26,23,0.55)] sm:p-6 md:p-8">
+          <div className="absolute inset-x-0 top-0 h-2 bg-[repeating-linear-gradient(-45deg,#c8372a_0_9px,#ebe3d5_9px_18px)]" />
+          <div className="mb-5 mt-2 flex items-center justify-center gap-3">
+            <span className="h-px w-8 bg-red/50 sm:w-16" />
+            <p className="ui text-[11px] text-red sm:text-[12px]">Choose where to buy</p>
+            <span className="h-px w-8 bg-red/50 sm:w-16" />
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <BuyButton className="w-full" />
+            <RetailerButton retailer="barnesAndNoble" href={site.barnesAndNobleUrl} label="Buy on Barnes & Noble" className="w-full" />
+            <RetailerButton retailer="bookshop" href={site.bookshopUrl} label="Buy on Bookshop.org" className="w-full" />
+            <RetailerButton
+              retailer="selar"
+              href={site.selarUrl}
+              label="Buy in Nigeria / West Africa"
+              className="w-full"
+            />
+            <BulkButton className="w-full" />
+          </div>
         </div>
+
+        <figure className="relative mx-auto mt-7 max-w-2xl">
+          <blockquote className="font-display text-[22px] italic leading-snug text-ink md:text-[28px]">
+            &ldquo;{selectedQuotes.landing}&rdquo;
+          </blockquote>
+          <figcaption className="ui mt-3 text-[10px] text-ink/65 sm:text-[11px]">
+            {selectedQuotes.source}
+          </figcaption>
+        </figure>
+
+        <p className="relative mt-7 font-display text-[20px] italic text-ink md:text-[24px]">{site.subtitle}</p>
+        <p className="relative mx-auto mt-2 max-w-xl text-[15px] leading-relaxed text-ink/70 md:text-[16px]">{site.editorialCredit}</p>
 
         <ul className="ui relative mx-auto mt-12 flex max-w-2xl flex-wrap justify-center gap-x-6 gap-y-3 text-ink/80">
           {site.nav.map((l) => (
@@ -84,6 +121,14 @@ export default function Home() {
 
           <div className="max-w-[65ch] text-[18px] leading-[1.7] md:text-[19px]">
             <h2 className="display text-[38px] text-red md:text-[56px]">{aboutBook.heading}</h2>
+            <figure className="mt-7 border-l-4 border-gold pl-5">
+              <blockquote className="font-display text-[23px] italic leading-snug text-ink md:text-[28px]">
+                &ldquo;{selectedQuotes.about}&rdquo;
+              </blockquote>
+              <figcaption className="ui mt-4 text-[10px] text-ink/60 sm:text-[11px]">
+                {selectedQuotes.source}
+              </figcaption>
+            </figure>
             <p className="mt-7 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[64px] first-letter:leading-[0.8] first-letter:text-red">
               {aboutBook.intro[0]}
             </p>
@@ -108,8 +153,20 @@ export default function Home() {
             <p className="mt-10 border-t-2 border-gold pt-8 font-display text-[22px] italic leading-snug text-ink md:text-[26px]">
               {aboutBook.closing}
             </p>
-            <div className="mt-9">
-              <BuyButton />
+            <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
+              <BuyButton className="w-full sm:w-auto" />
+              <RetailerButton
+                retailer="selar"
+                href={site.selarUrl}
+                label="Buy in Nigeria / West Africa"
+                className="w-full sm:w-auto"
+              />
+              <RetailerButton
+                retailer="barnesAndNoble"
+                href={site.barnesAndNobleUrl}
+                label="Buy on Barnes & Noble"
+                className="w-full sm:w-auto"
+              />
             </div>
           </div>
         </div>
@@ -141,6 +198,14 @@ export default function Home() {
             <h2 className="display text-[38px] md:text-[56px]">{author.heading}</h2>
             <p className="mt-3 font-display text-[22px] italic text-cream md:text-[26px]">{site.author}</p>
             <p className="mt-6 text-[18px] leading-[1.75] text-white md:text-[19px]">{author.bio}</p>
+            <figure className="mt-8 border-l-2 border-gold-light pl-5">
+              <blockquote className="font-display text-[22px] italic leading-snug text-white md:text-[27px]">
+                &ldquo;{selectedQuotes.author}&rdquo;
+              </blockquote>
+              <figcaption className="ui mt-4 text-[10px] text-cream/75 sm:text-[11px]">
+                {selectedQuotes.source}
+              </figcaption>
+            </figure>
             {instagram && (
               <a
                 href={instagram.href}
@@ -217,6 +282,19 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="bg-charcoal px-4 py-14 text-center text-cream md:py-16">
+        <figure className="mx-auto max-w-4xl">
+          <blockquote className="font-display text-[27px] italic leading-snug md:text-[42px]">
+            &ldquo;{selectedQuotes.closing}&rdquo;
+          </blockquote>
+          <figcaption className="ui mt-5 text-[10px] text-gold-light sm:text-[11px]">
+            {selectedQuotes.source}
+          </figcaption>
+        </figure>
+      </section>
+
+      <ReaderVoices />
     </>
   );
 }

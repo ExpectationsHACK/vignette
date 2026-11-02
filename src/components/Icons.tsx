@@ -45,6 +45,37 @@ export const ShoppingBag = (p: IconProps) => (
   </Icon>
 );
 
+export const Store = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M3 10h18" />
+    <path d="m5 10 1-6h12l1 6" />
+    <path d="M4 10v10h16V10" />
+    <path d="M9 20v-6h6v6" />
+    <path d="M3 10a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0" />
+  </Icon>
+);
+
+export const BookOpen = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M12 7v14" />
+    <path d="M3 18V5a1 1 0 0 1 1-1h3a5 5 0 0 1 5 5 5 5 0 0 1 5-5h3a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-4a4 4 0 0 0-4 2 4 4 0 0 0-4-2H4a1 1 0 0 1-1-1Z" />
+  </Icon>
+);
+
+export const CreditCard = (p: IconProps) => (
+  <Icon {...p}>
+    <rect x="2" y="5" width="20" height="14" rx="2" />
+    <path d="M2 10h20" />
+    <path d="M6 15h3" />
+  </Icon>
+);
+
+export const Star = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z" />
+  </Icon>
+);
+
 export const Users = (p: IconProps) => (
   <Icon {...p}>
     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />

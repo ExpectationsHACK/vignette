@@ -1,5 +1,6 @@
 import { socialIcons } from "@/components/Icons";
-import { footer, site } from "@/content/book";
+import { GoodreadsButton } from "@/components/Cta";
+import { enquire, footer, site } from "@/content/book";
 
 export default function Footer() {
   const social = footer.social.filter((s) => s.href);
@@ -33,6 +34,18 @@ export default function Footer() {
           </ul>
         </div>
       )}
+
+      <div className="mt-8 flex flex-col items-center justify-center gap-4">
+        <GoodreadsButton tone="dark" />
+        {enquire.email && (
+          <a
+            href={`mailto:${enquire.email}?subject=${encodeURIComponent("Press & Media Inquiry - Vignettes of a Nigerian Experience")}`}
+            className="inline-flex min-h-11 items-center text-white/75 underline underline-offset-4 transition-colors hover:text-gold-light"
+          >
+            Press &amp; Media Inquiries
+          </a>
+        )}
+      </div>
 
       <p className="mt-12 border-t border-white/10 pt-8 font-sans text-[13px] text-white/55">
         © {new Date().getFullYear()} {site.publisher}. All rights reserved.

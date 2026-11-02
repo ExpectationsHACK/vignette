@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, socialIcons } from "@/components/Icons";
-import { BuyButton, BulkButton } from "@/components/Cta";
-import { site, footer } from "@/content/book";
+import { BuyButton, BulkButton, GoodreadsButton } from "@/components/Cta";
+import { site, footer, enquire } from "@/content/book";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const social = footer.social.filter((s) => s.href);
 
   useEffect(() => {
@@ -21,6 +22,24 @@ export default function Header() {
       if (e.key === "Escape" && open) {
         setOpen(false);
         toggleRef.current?.focus();
+        return;
+      }
+
+      if (e.key === "Tab" && open && menuRef.current) {
+        const focusable = menuRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!first || !last) {
+          e.preventDefault();
+        } else if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
     window.addEventListener("keydown", onKey);
@@ -66,6 +85,7 @@ export default function Header() {
       </header>
 
       <div
+        ref={menuRef}
         id="site-menu"
         role="dialog"
         aria-modal="true"
@@ -99,6 +119,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
+          <GoodreadsButton tone="dark" className="relative mt-5 min-h-11 w-fit" />
           {social.length > 0 && (
             <ul className="relative mt-6 flex gap-3 md:mt-10">
               {social.map((s) => {
@@ -118,6 +139,14 @@ export default function Header() {
                 );
               })}
             </ul>
+          )}
+          {enquire.email && (
+            <a
+              href={`mailto:${enquire.email}?subject=${encodeURIComponent("Press & Media Inquiry - Vignettes of a Nigerian Experience")}`}
+              className="ui relative mt-5 inline-flex min-h-11 items-center text-white underline underline-offset-4"
+            >
+              Press &amp; Media Inquiries
+            </a>
           )}
         </nav>
 

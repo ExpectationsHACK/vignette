@@ -1,5 +1,5 @@
 // All site copy comes from "Landing Pages Vingettes.docx" (corrections applied).
-// Links marked TODO still need real URLs.
+// Unconfigured purchase and discovery links are kept blank until official URLs are available.
 
 export const site = {
   /** Live address: a subdomain of esuakemapress.com (DNS at Wix, CNAME to Vercel). */
@@ -12,15 +12,29 @@ export const site = {
   seoTitle: "Vignettes of a Nigerian Experience | Memoir by Heloise Annette Oton",
   metaDescription:
     "A Harlem-born woman of Caribbean heritage follows love to Nigeria in 1962. Discover Heloise Annette Oton’s vivid memoir of marriage, war, teaching, and home.",
-  /** TODO: Amazon product page URL. */
-  amazonUrl: "#",
+  /** Add each official destination here when its listing is ready. */
+  amazonUrl: "",
+  barnesAndNobleUrl: "",
+  bookshopUrl: "",
+  selarUrl: "",
+  goodreadsUrl: "",
+  heroCover: { src: "/images/vignettes-book-cover.png", width: 592, height: 823 },
   mockup: { src: "/images/vignettes-mockup.jpg", width: 1023, height: 1280 },
   nav: [
     { label: "About the Book", href: "#about" },
     { label: "Meet the Author", href: "#author" },
     { label: "From the Book", href: "#excerpts" },
+    { label: "Reader Voices", href: "#reader-voices" },
     { label: "Bulk Orders & Events", href: "#enquire" },
   ],
+};
+
+export const selectedQuotes = {
+  landing: "…the sea is not a barrier but a road.",
+  about: "In Nigeria, as I had long since learned, an unannounced visitor is not an imposition but simply an expression of relationship.",
+  author: "I carry stories from New York to Lagos to Calabar and back again, and now I am setting them down, for the first time, in a place where they might outlast me.",
+  closing: "The drums are still drumming somewhere in Calabar… I am still listening.",
+  source: "Heloise Annette Oton, Vignettes of a Nigerian Experience",
 };
 
 export const aboutBook = {
@@ -41,14 +55,10 @@ export const aboutBook = {
 
 export const author = {
   heading: "Meet the Author",
-  /**
-   * Author portrait. Save the photo as /public/images/heloise.jpg; until the file
-   * exists a placeholder is shown. `position` sets which part of the photo stays
-   * in frame when it is cropped to a portrait shape.
-   */
+  /** `position` sets which part of the portrait stays in frame when cropped. */
   photo: {
-    src: "/images/heloise.jpg",
-    alt: "Heloise Annette Oton, smiling, in a blue and violet batik headwrap and dress",
+    src: "/author.jpg",
+    alt: "Heloise Annette Oton smiling in a blue patterned jacket",
     position: "50% 30%",
   },
   bio: "Heloise Annette Oton was born in Harlem, New York, to a Jamaican mother and a Trinidadian father. She grew up in the Bronx, studied at Columbia, and marched on Washington. In 1962 she followed her husband, Esuakema Udo Oton, to Nigeria, where she lived for more than two decades. She taught hundreds of students in Calabar, raised five children, and managed a business after her husband’s death. She writes from Brooklyn, New York.",
@@ -59,22 +69,25 @@ export const excerpts = {
   quotes: [
     { text: "Nothing in America had prepared me for Lagos, Nigeria.", source: "Chapter Five, “Adventures in Lagos”" },
     { text: "Esuakema made me a border-crosser.", source: "Prologue" },
-    { text: "The drums are still drumming somewhere in Calabar… I am still listening.", source: "Epilogue" },
   ],
+};
+
+export const readerVoices = {
+  heading: "Reader & Community Voices",
+  body: "Have you read the book, known Heloise, or been touched by her work? We would love to hear what her story has meant to you. Comments are saved only in this browser and are not shared with other visitors.",
 };
 
 export const enquire = {
   heading: "Bulk Orders, Book Clubs, and Events",
   body: "Planning a reading, an event, or an order for your group? Churches, alumni associations, community unions, schools, and book clubs are welcome to enquire about bulk copies, review copies, discussion questions, and author conversations.",
-  /** TODO: contact email (domain or Gmail/Outlook still to be decided). Empty hides it. */
-  email: "",
+  email: "info@esuakemapress.com",
   topics: ["Bulk order", "Book club", "Author conversation", "Newsletter feature", "Other"],
 };
 
 export const footer = {
-  /** Profiles with an empty href are hidden. TODO: Facebook URL. */
+  /** Profiles with an empty href are hidden until their official page is available. */
   social: [
-    { label: "Facebook", icon: "facebook", href: "" },
+    { label: "Facebook", icon: "facebook", href: "https://www.facebook.com/profile.php?id=61595653392157&mibextid=wwXIfr" },
     { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/esuakemapress/" },
     { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/in/esuakema-press-b8718b446" },
   ] as const,
