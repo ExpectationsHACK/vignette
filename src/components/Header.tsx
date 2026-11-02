@@ -55,7 +55,7 @@ export default function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 flex h-[53px] items-center justify-between px-4 transition-colors duration-500 md:px-6 ${
-          open ? "bg-red text-white" : "bg-paper/95 text-ink shadow-[0_1px_0_rgba(29,26,23,0.08)] backdrop-blur-sm"
+          "bg-red text-white shadow-[0_1px_0_rgba(29,26,23,0.18)]"
         }`}
       >
         <Link href="/" onClick={close} className="font-display text-[15px] font-semibold uppercase tracking-[0.14em] sm:text-[17px]">

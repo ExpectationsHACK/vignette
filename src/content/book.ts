@@ -57,7 +57,7 @@ export const author = {
   heading: "Meet the Author",
   /** `position` sets which part of the portrait stays in frame when cropped. */
   photo: {
-    src: "/author.jpg",
+    src: "/images/author.jpg",
     alt: "Heloise Annette Oton smiling in a blue patterned jacket",
     position: "50% 30%",
   },

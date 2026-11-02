@@ -222,25 +222,25 @@ export default function Home() {
       </section>
 
       {/* From the book: one featured line, two supporting */}
-      <section id="excerpts" className="relative overflow-hidden bg-ink px-4 py-16 text-cream md:py-24">
+      <section id="excerpts" className="relative overflow-hidden bg-cream px-4 py-16 text-ink md:py-24">
         <div className="pointer-events-none absolute -bottom-40 -left-32 aspect-square w-80 rounded-full bg-red md:w-[30rem]" />
-        <h2 className="display relative text-center text-[38px] text-cream md:text-[56px]">{excerpts.heading}</h2>
+        <h2 className="display relative text-center text-[38px] text-ink md:text-[56px]">{excerpts.heading}</h2>
 
         <figure className="relative mx-auto mt-12 max-w-4xl text-center">
           <QuoteMark size={48} className="mx-auto text-red" />
-          <blockquote className="mt-4 font-display text-[30px] italic leading-[1.2] text-cream text-balance md:text-[48px]">
+          <blockquote className="mt-4 font-display text-[30px] italic leading-[1.2] text-ink text-balance md:text-[48px]">
             {featured.text}
           </blockquote>
-          <figcaption className="ui mt-6 text-gold-light">{featured.source}</figcaption>
+          <figcaption className="ui mt-6 text-red">{featured.source}</figcaption>
         </figure>
 
-        <div className="relative mx-auto mt-14 grid max-w-5xl gap-10 border-t border-cream/20 pt-12 md:grid-cols-2 md:gap-16">
+        <div className="relative mx-auto mt-14 grid max-w-5xl gap-10 border-t border-ink/20 pt-12 md:grid-cols-2 md:gap-16">
           {restQuotes.map((q) => (
             <figure key={q.source} className="text-center md:text-left">
-              <blockquote className="font-display text-[24px] italic leading-snug text-cream md:text-[28px]">
+              <blockquote className="font-display text-[24px] italic leading-snug text-ink md:text-[28px]">
                 &ldquo;{q.text}&rdquo;
               </blockquote>
-              <figcaption className="ui mt-4 text-gold-light">{q.source}</figcaption>
+              <figcaption className="ui mt-4 text-red">{q.source}</figcaption>
             </figure>
           ))}
         </div>
@@ -283,12 +283,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-charcoal px-4 py-14 text-center text-cream md:py-16">
+      <section className="bg-cream px-4 py-14 text-center text-ink md:py-16">
         <figure className="mx-auto max-w-4xl">
           <blockquote className="font-display text-[27px] italic leading-snug md:text-[42px]">
             &ldquo;{selectedQuotes.closing}&rdquo;
           </blockquote>
-          <figcaption className="ui mt-5 text-[10px] text-gold-light sm:text-[11px]">
+          <figcaption className="ui mt-5 text-[10px] text-red sm:text-[11px]">
             {selectedQuotes.source}
           </figcaption>
         </figure>
