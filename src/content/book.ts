@@ -88,21 +88,49 @@ export const historicalJourney = {
     "Follow Heloise from her first arrival in Nigeria to the places and events that shaped her family and her sense of home.",
   stops: [
     {
+      image: {
+        src: "/images/journey/lagos-1950s.jpg",
+        alt: "A quiet street in Lagos with arcaded colonial buildings and a twin-towered church in the distance",
+        caption: "Joseph Street, Lagos, mid-20th century",
+        credit: "Edward Harland Duckworth / Northwestern University Libraries",
+        source: "https://commons.wikimedia.org/wiki/File:Joseph_Street,_Lagos,_with_the_Royal_Cinema.png",
+      },
       title: "Nigeria, 1962",
       description:
         "A newly married Heloise leaves New York for a country she has never imagined calling home.",
     },
     {
+      image: {
+        src: "/images/journey/nsukka-1960.jpg",
+        alt: "Dr. Nnamdi Azikiwe in white robes standing among students on the University of Nigeria campus at Nsukka",
+        caption: "Dr. Nnamdi Azikiwe with students at the University of Nigeria, Nsukka, 1960",
+        credit: "E. H. Duckworth / Northwestern University Libraries",
+        source: "https://commons.wikimedia.org/wiki/File:Dr._Nnamdi_Azikiwe,_Dr._George_Johnson_and_students_on_the_campus_of_the_University_of_Nigeria,_Nsukka.jpg",
+      },
       title: "Nsukka",
       description:
         "At the university town of Nsukka, family life unfolds amid the changing realities of a young nation.",
     },
     {
+      image: {
+        src: "/images/journey/new-nigerian-1970.jpg",
+        alt: "Front page of the New Nigerian newspaper, 12 January 1970, headlined Owerri is now captured",
+        caption: "New Nigerian, 12 January 1970",
+        credit: "Aart Rietveld / ASC Leiden, CC BY-SA 4.0",
+        source: "https://commons.wikimedia.org/wiki/File:ASC_Leiden_-_Rietveld_Collection_-_Nigeria_1970_-_1973_-_01_-_093_New_Nigerian_newspaper_page_7_January_1970._End_of_the_Nigerian_civil_war_with_Biafra.jpg",
+      },
       title: "The Biafra War",
       description:
         "The Nigeria-Biafra War transforms daily life and becomes a defining chapter in Heloise’s story.",
     },
     {
+      image: {
+        src: "/images/journey/calabar-1968.jpg",
+        alt: "A Red Cross ambulance and a helicopter at a grass airfield used for relief flights in Calabar",
+        caption: "Relief airfield, Calabar, 1968",
+        credit: "CDC / Dr. Lyle Conrad",
+        source: "https://commons.wikimedia.org/wiki/File:Makeshift_airport_in_Calabar,_Nigeria,_probably_1968.png",
+      },
       title: "Calabar",
       description:
         "In Calabar, Heloise teaches, raises five children, and builds a community of her own.",

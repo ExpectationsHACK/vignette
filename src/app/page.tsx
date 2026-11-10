@@ -271,10 +271,32 @@ export default function Home() {
           </p>
           <ol className="relative mt-12 grid gap-5 md:grid-cols-2">
             {historicalJourney.stops.map((stop, index) => (
-              <li key={stop.title} className="relative border-t-4 border-red bg-white p-6 shadow-[0_14px_32px_-24px_rgba(29,26,23,0.5)] md:p-8">
-                <p className="ui text-[11px] text-red">0{index + 1}</p>
-                <h3 className="display mt-3 text-[26px] text-ink md:text-[32px]">{stop.title}</h3>
-                <p className="mt-3 text-[17px] leading-relaxed text-ink/75">{stop.description}</p>
+              <li key={stop.title} className="relative flex flex-col bg-white shadow-[0_14px_32px_-24px_rgba(29,26,23,0.5)]">
+                <div className="relative aspect-[4/3] overflow-hidden bg-sand">
+                  <Image
+                    src={stop.image.src}
+                    alt={stop.image.alt}
+                    fill
+                    sizes="(min-width: 768px) 560px, 100vw"
+                    className="object-cover grayscale sepia-[0.25]"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col border-t-4 border-red p-6 md:p-8">
+                  <p className="ui text-[11px] text-red">0{index + 1}</p>
+                  <h3 className="display mt-3 text-[26px] text-ink md:text-[32px]">{stop.title}</h3>
+                  <p className="mt-3 text-[17px] leading-relaxed text-ink/75">{stop.description}</p>
+                  <p className="mt-auto pt-5 text-[13px] leading-snug text-ink/55">
+                    {stop.image.caption}. Photo:{" "}
+                    <a
+                      href={stop.image.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-2 hover:text-red"
+                    >
+                      {stop.image.credit}
+                    </a>
+                  </p>
+                </div>
               </li>
             ))}
           </ol>
