@@ -7,6 +7,7 @@ export const site = {
   publisher: "Esuakema Press",
   title: "Vignettes of a Nigerian Experience",
   author: "Heloise Annette Oton",
+  tagline: "A Caribbean American woman’s journey through Nigeria",
   subtitle: "A Memoir by Heloise Annette Oton",
   editorialCredit: "Historical Context and Editorial Development: Goodness Chidinma Eweama",
   seoTitle: "Vignettes of a Nigerian Experience | Memoir by Heloise Annette Oton",
@@ -21,11 +22,13 @@ export const site = {
   heroCover: { src: "/images/vignettes-book-cover.png", width: 592, height: 823 },
   mockup: { src: "/images/vignettes-mockup.jpg", width: 1023, height: 1280 },
   nav: [
-    { label: "About the Book", href: "#about" },
+    { label: "Discover the Book", href: "#about" },
     { label: "Meet the Author", href: "#author" },
-    { label: "From the Book", href: "#excerpts" },
-    { label: "Reader Voices", href: "#reader-voices" },
-    { label: "Bulk Orders & Events", href: "#enquire" },
+    { label: "Read an Excerpt", href: "#excerpts" },
+    { label: "Reviews & Endorsements", href: "#reader-voices" },
+    { label: "Historical Journey", href: "#journey" },
+    { label: "Book Heloise", href: "#enquire" },
+    { label: "Buy the Book", href: "#buy" },
   ],
 };
 
@@ -54,14 +57,21 @@ export const aboutBook = {
 };
 
 export const author = {
-  heading: "Meet the Author",
+  heading: "Meet Heloise Annette Oton",
+  deck: "A life between continents. A story that spans generations.",
   /** `position` sets which part of the portrait stays in frame when cropped. */
   photo: {
     src: "/images/author.jpg",
     alt: "Heloise Annette Oton smiling in a blue patterned jacket",
     position: "50% 30%",
   },
-  bio: "Heloise Annette Oton was born in Harlem, New York, to a Jamaican mother and a Trinidadian father. She grew up in the Bronx, studied at Columbia, and marched on Washington. In 1962 she followed her husband, Esuakema Udo Oton, to Nigeria, where she lived for more than two decades. She taught hundreds of students in Calabar, raised five children, and managed a business after her husband’s death. She writes from Brooklyn, New York.",
+  bio: [
+    "Born in Harlem to Jamaican and Trinidadian parents, Heloise Annette Oton grew up in the Bronx, studied at Columbia University, and participated in the historic March on Washington.",
+    "In 1962, she followed her husband to Nigeria, beginning a remarkable journey that would transform her understanding of love, identity, family, and belonging.",
+    "From Lagos to the university town of Nsukka, through the Nigeria-Biafra War and into Calabar, Heloise witnessed a nation in transition while building a life of her own.",
+    "She taught hundreds of students, raised five children, and developed deep connections to the people and communities around her.",
+    "Now writing from Brooklyn, New York, Heloise shares her extraordinary experiences in Vignettes of a Nigerian Experience: a memoir about crossing borders, discovering home, and preserving the stories that connect us.",
+  ],
 };
 
 export const excerpts = {
@@ -72,14 +82,42 @@ export const excerpts = {
   ],
 };
 
+export const historicalJourney = {
+  heading: "Explore the Historical Journey",
+  introduction:
+    "Follow Heloise from her first arrival in Nigeria to the places and events that shaped her family and her sense of home.",
+  stops: [
+    {
+      title: "Nigeria, 1962",
+      description:
+        "A newly married Heloise leaves New York for a country she has never imagined calling home.",
+    },
+    {
+      title: "Nsukka",
+      description:
+        "At the university town of Nsukka, family life unfolds amid the changing realities of a young nation.",
+    },
+    {
+      title: "The Biafra War",
+      description:
+        "The Nigeria-Biafra War transforms daily life and becomes a defining chapter in Heloise’s story.",
+    },
+    {
+      title: "Calabar",
+      description:
+        "In Calabar, Heloise teaches, raises five children, and builds a community of her own.",
+    },
+  ],
+};
+
 export const readerVoices = {
-  heading: "Reader & Community Voices",
-  body: "Have you read the book, known Heloise, or been touched by her work? We would love to hear what her story has meant to you. Comments are saved only in this browser and are not shared with other visitors.",
+  heading: "Reviews & Endorsements",
+  body: "Professional reviews and literary endorsements will be shared here as they become available. Have you read the book, known Heloise, or been touched by her work? Share what her story has meant to you. Comments are reviewed before they appear here.",
 };
 
 export const enquire = {
-  heading: "Bulk Orders, Book Clubs, and Events",
-  body: "Planning a reading, an event, or an order for your group? Churches, alumni associations, community unions, schools, and book clubs are welcome to enquire about bulk copies, review copies, discussion questions, and author conversations.",
+  heading: "Book Heloise",
+  body: "Invite Heloise for an author talk, interview, book-club conversation, or speaking engagement. Churches, alumni associations, community unions, schools, and book clubs are also welcome to enquire about bulk copies, review copies, and discussion questions.",
   email: "info@esuakemapress.com",
   topics: ["Bulk order", "Book club", "Author conversation", "Newsletter feature", "Other"],
 };

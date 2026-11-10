@@ -5,7 +5,7 @@ import ContactForm from "@/components/ContactForm";
 import { BuyButton, BulkButton, RetailerButton } from "@/components/Cta";
 import { Eye, Heart, Home as HomeIcon, Instagram, QuoteMark, Users } from "@/components/Icons";
 import ReaderVoices from "@/components/ReaderVoices";
-import { site, aboutBook, author, excerpts, enquire, footer, selectedQuotes } from "@/content/book";
+import { site, aboutBook, author, excerpts, enquire, footer, historicalJourney, selectedQuotes } from "@/content/book";
 
 const highlightIcons = [Heart, Eye, HomeIcon, Users];
 
@@ -85,7 +85,8 @@ export default function Home() {
           </figcaption>
         </figure>
 
-        <p className="relative mt-7 font-display text-[20px] italic text-ink md:text-[24px]">{site.subtitle}</p>
+        <p className="relative mt-7 font-display text-[20px] italic text-ink md:text-[24px]">{site.tagline}</p>
+        <p className="relative mt-2 text-[15px] text-ink/70">{site.subtitle}</p>
         <p className="relative mx-auto mt-2 max-w-xl text-[15px] leading-relaxed text-ink/70 md:text-[16px]">{site.editorialCredit}</p>
 
         <ul className="ui relative mx-auto mt-12 flex max-w-2xl flex-wrap justify-center gap-x-6 gap-y-3 text-ink/80">
@@ -196,8 +197,12 @@ export default function Home() {
 
           <div className="relative max-w-[60ch]">
             <h2 className="display text-[38px] md:text-[56px]">{author.heading}</h2>
-            <p className="mt-3 font-display text-[22px] italic text-cream md:text-[26px]">{site.author}</p>
-            <p className="mt-6 text-[18px] leading-[1.75] text-white md:text-[19px]">{author.bio}</p>
+            <p className="mt-3 font-display text-[22px] italic text-cream md:text-[26px]">{author.deck}</p>
+            <div className="mt-6 space-y-4 text-[18px] leading-[1.75] text-white md:text-[19px]">
+              {author.bio.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
             <figure className="mt-8 border-l-2 border-gold-light pl-5">
               <blockquote className="font-display text-[22px] italic leading-snug text-white md:text-[27px]">
                 &ldquo;{selectedQuotes.author}&rdquo;
@@ -221,7 +226,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* From the book: one featured line, two supporting */}
+      {/* Selected passages from the book */}
       <section id="excerpts" className="relative overflow-hidden bg-cream px-4 py-16 text-ink md:py-24">
         <div className="pointer-events-none absolute -bottom-40 -left-32 aspect-square w-80 rounded-full bg-red md:w-[30rem]" />
         <h2 className="display relative text-center text-[38px] text-ink md:text-[56px]">{excerpts.heading}</h2>
@@ -232,6 +237,15 @@ export default function Home() {
             {featured.text}
           </blockquote>
           <figcaption className="ui mt-6 text-ink/70">{featured.source}</figcaption>
+        </figure>
+
+        <figure className="relative mx-auto mt-12 max-w-3xl border-l-4 border-gold pl-5 text-left">
+          <blockquote className="font-display text-[22px] italic leading-snug text-ink md:text-[28px]">
+            &ldquo;{selectedQuotes.about}&rdquo;
+          </blockquote>
+          <figcaption className="ui mt-4 text-[10px] text-ink/65 sm:text-[11px]">
+            {selectedQuotes.source}
+          </figcaption>
         </figure>
 
         <div className="relative mx-auto mt-14 grid max-w-5xl gap-10 border-t border-ink/20 pt-12 md:grid-cols-2 md:gap-16">
@@ -246,17 +260,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Secondary CTA below the quotes, laid out like the cover: red disc on cream */}
-      <section className="relative overflow-hidden bg-cream px-4 pb-20 pt-24 text-center md:pb-24 md:pt-32">
-        <div className="pointer-events-none absolute left-1/2 top-0 aspect-square w-[160vw] -translate-x-1/2 -translate-y-[86%] rounded-full bg-red md:w-[90vw] md:-translate-y-[88%]" />
-        <div className="stripes pointer-events-none absolute -bottom-6 -right-6 hidden h-32 w-32 opacity-80 sm:block" />
-        <p className="display relative mx-auto max-w-3xl text-[32px] text-ink md:text-[52px]">
-          Vignettes <span className="font-display normal-case italic tracking-normal text-gold">of a</span> Nigerian Experience
-        </p>
-        <p className="relative mt-4 font-display text-[20px] italic text-ink/80 md:text-[22px]">{site.subtitle}</p>
-        <div className="relative mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <BuyButton className="w-full max-w-[360px] sm:w-auto" />
-          <BulkButton className="w-full max-w-[360px] sm:w-auto" />
+      <ReaderVoices />
+
+      <section id="journey" className="bg-paper px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <p className="ui text-center text-red">Nigeria through Heloise’s eyes</p>
+          <h2 className="display mt-3 text-center text-[36px] text-ink md:text-[52px]">{historicalJourney.heading}</h2>
+          <p className="mx-auto mt-5 max-w-[58ch] text-center text-[18px] leading-relaxed text-ink/80 md:text-[19px]">
+            {historicalJourney.introduction}
+          </p>
+          <ol className="relative mt-12 grid gap-5 md:grid-cols-2">
+            {historicalJourney.stops.map((stop, index) => (
+              <li key={stop.title} className="relative border-t-4 border-red bg-white p-6 shadow-[0_14px_32px_-24px_rgba(29,26,23,0.5)] md:p-8">
+                <p className="ui text-[11px] text-red">0{index + 1}</p>
+                <h3 className="display mt-3 text-[26px] text-ink md:text-[32px]">{stop.title}</h3>
+                <p className="mt-3 text-[17px] leading-relaxed text-ink/75">{stop.description}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -294,7 +315,37 @@ export default function Home() {
         </figure>
       </section>
 
-      <ReaderVoices />
+      <section id="buy" className="relative overflow-hidden bg-cream px-4 pb-20 pt-24 text-center md:pb-24 md:pt-32">
+        <div className="pointer-events-none absolute left-1/2 top-0 aspect-square w-[160vw] -translate-x-1/2 -translate-y-[86%] rounded-full bg-red md:w-[90vw] md:-translate-y-[88%]" />
+        <div className="stripes pointer-events-none absolute -bottom-6 -right-6 hidden h-32 w-32 opacity-80 sm:block" />
+        <p className="ui relative text-red">Buy the Book</p>
+        <p className="display relative mx-auto max-w-3xl text-[32px] text-ink md:text-[52px]">
+          Vignettes <span className="font-display normal-case italic tracking-normal text-gold">of a</span> Nigerian Experience
+        </p>
+        <p className="relative mt-4 font-display text-[20px] italic text-ink/80 md:text-[22px]">{site.tagline}</p>
+        <div className="relative mx-auto mt-9 flex max-w-4xl flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+          <BuyButton className="w-full max-w-[360px] sm:w-auto" />
+          <RetailerButton
+            retailer="barnesAndNoble"
+            href={site.barnesAndNobleUrl}
+            label="Buy on Barnes & Noble"
+            className="w-full max-w-[360px] sm:w-auto"
+          />
+          <RetailerButton
+            retailer="bookshop"
+            href={site.bookshopUrl}
+            label="Buy on Bookshop.org"
+            className="w-full max-w-[360px] sm:w-auto"
+          />
+          <RetailerButton
+            retailer="selar"
+            href={site.selarUrl}
+            label="Buy in Nigeria / West Africa"
+            className="w-full max-w-[360px] sm:w-auto"
+          />
+          <BulkButton className="w-full max-w-[360px] sm:w-auto" />
+        </div>
+      </section>
     </>
   );
 }
