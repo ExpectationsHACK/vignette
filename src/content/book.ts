@@ -14,8 +14,8 @@ export const site = {
   metaDescription:
     "A Harlem-born woman of Caribbean heritage follows love to Nigeria in 1962. Discover Heloise Annette Oton’s vivid memoir of marriage, war, teaching, and home.",
   /** Add each official destination here when its listing is ready. */
-  amazonUrl: "",
-  barnesAndNobleUrl: "",
+  amazonUrl: "https://www.amazon.com/dp/B0HRKLSWBV",
+  barnesAndNobleUrl: "https://www.barnesandnoble.com/w/vignettes-of-a-nigerian-experience-heloise-oton/1151965991?ean=9798997227203",
   bookshopUrl: "",
   selarUrl: "",
   goodreadsUrl: "",
@@ -80,6 +80,21 @@ export const excerpts = {
     { text: "Nothing in America had prepared me for Lagos, Nigeria.", source: "Chapter Five, “Adventures in Lagos”" },
     { text: "Esuakema made me a border-crosser.", source: "Prologue" },
   ],
+};
+
+/** Opening of Chapter Five, shown as a preview above the "Download Full Chapter" form. */
+export const chapterPreview = {
+  label: "Chapter Five",
+  title: "Adventures in Lagos",
+  epigraph: { text: "When the music changes, so does the dance.", source: "Nigerian proverb" },
+  paragraphs: [
+    "Nothing in America had prepared me for Lagos, Nigeria.",
+    "Not the books I read inquisitively and diligently, or the lectures in the classrooms, or my research thesis, and not the political discussions in those Manhattan apartments or diplomatic receptions I visited at the Guinean Embassy. Not even love, which prepares you for a great many things but not, it turns out, for the specific sensory experience of a West African city in the early 1960s. Love may prepare you to follow someone, it may prepare you to risk and to hope and to commit yourself to an uncertain future, but it does not prepare you for heat that seems to rise not from the sun but from the earth itself, the very ground beneath your feet, as though the soil of Lagos is conducting some enormous subterranean furnace. It does not prepare you for air so rich with humidity that breathing feels slightly different, slightly thicker, as though the air is a substance that makes itself known in a way that the dry air of New York never does. It does not prepare you for the sheer, exuberant, overwhelming aliveness of the place.",
+  ],
+  cta: "Download Full Chapter",
+  formHeading: "Download Chapter Five",
+  formBody: "Enter your name and email and the full chapter will download as a PDF.",
+  fileName: "Vignettes-of-a-Nigerian-Experience-Chapter-Five.pdf",
 };
 
 export const historicalJourney = {

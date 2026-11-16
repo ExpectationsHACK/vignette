@@ -4,6 +4,7 @@ import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import { BuyButton, BulkButton, RetailerButton } from "@/components/Cta";
 import { Eye, Heart, Home as HomeIcon, Instagram, QuoteMark, Users } from "@/components/Icons";
+import ChapterPreview from "@/components/ChapterPreview";
 import ReaderVoices from "@/components/ReaderVoices";
 import { site, aboutBook, author, excerpts, enquire, footer, historicalJourney, selectedQuotes } from "@/content/book";
 
@@ -69,7 +70,7 @@ export default function Home() {
             <RetailerButton
               retailer="selar"
               href={site.selarUrl}
-              label="Buy in Nigeria / West Africa"
+              label="Buy on Selar"
               className="w-full"
             />
             <BulkButton className="w-full" />
@@ -159,7 +160,7 @@ export default function Home() {
               <RetailerButton
                 retailer="selar"
                 href={site.selarUrl}
-                label="Buy in Nigeria / West Africa"
+                label="Buy on Selar"
                 className="w-full sm:w-auto"
               />
               <RetailerButton
@@ -259,6 +260,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <ChapterPreview />
 
       <ReaderVoices />
 
@@ -362,7 +365,7 @@ export default function Home() {
           <RetailerButton
             retailer="selar"
             href={site.selarUrl}
-            label="Buy in Nigeria / West Africa"
+            label="Buy on Selar"
             className="w-full max-w-[360px] sm:w-auto"
           />
           <BulkButton className="w-full max-w-[360px] sm:w-auto" />
